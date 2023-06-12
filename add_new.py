@@ -48,6 +48,8 @@ def get_file(path_in):
     '''所有层级文件遍历'''
     for root, dirs, files in os.walk(path_in):
         for fileName in files:
+            if fileName == ".gitkeep":
+                continue
             full_path = os.path.normpath(os.path.join(root, fileName))
             yield full_path
 

@@ -146,10 +146,11 @@ def tag_update(tag_list: list):
         sorted_strings = sorted(strings, key=lambda x: pinyin.get(x, format='strip'))
         grouped_strings = []
         current_letter = None
+        ex_list=[]
         for string in sorted_strings:
             # 跳过数字和纯英文
             if contains_chinese_characters(string):
-                grouped_strings.append(string)
+                ex_list.append(string)
                 continue
             # 添加首字母索引
             first_letter = get_first_letter(string)
@@ -157,7 +158,8 @@ def tag_update(tag_list: list):
                 current_letter = first_letter
                 grouped_strings.append(first_letter)
             grouped_strings.append(string)
-        return grouped_strings
+        ex_list = sorted(ex_list, key=lambda x: x.lower())
+        return ex_list+grouped_strings
     
     tag_list = sort_and_group_by_pinyin(tag_list)
     with open(json_tag, 'w', encoding="utf-8") as file:

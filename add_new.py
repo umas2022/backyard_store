@@ -57,7 +57,7 @@ def get_file(path_in):
 
 
 def add_new(path_store,path_new):
-    '''添加新的图片'''
+    '''添加新的图片(重命名并移动至相应pack)'''
     pack_list = [x for x in get_first_dir(path_store)]
     
     pack_last_num = int(pack_list[-1].replace("pack", ""))
@@ -101,7 +101,7 @@ def add_new(path_store,path_new):
 
 
 def list_update(path_store, list_json):
-    '''更新json索引'''
+    '''更新json索引(./index/list_xxx.json)'''
     img_list = {}
     tag_list = []
 
@@ -130,7 +130,7 @@ def list_update(path_store, list_json):
 
 
 def tag_update(tag_list: list):
-    '''更新tag列表'''
+    '''更新tag列表(./index/list_tag.json)'''
     with open(json_tag, 'w', encoding="utf-8") as file:
         js_str = json.dumps(tag_list, ensure_ascii=False)
         file.write(js_str)
@@ -139,13 +139,13 @@ def tag_update(tag_list: list):
 
 
 
-# 添加新图片
+# 添加新资源
 add_new(path_image,path_new_image)
 add_new(path_sticker,path_new_sticker)
 add_new(path_video,path_new_video)
 
 
-# 更新图片列表
+# 更新资源列表
 tag_list_img = list_update(path_image,json_image)
 tag_list_stk = list_update(path_sticker,json_sticker)
 tag_list_vid = list_update(path_video,json_video)

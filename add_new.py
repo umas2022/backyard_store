@@ -7,6 +7,7 @@ https://github.com/umas2022/umas2022.github.io/actions
 import os
 import json
 from pinyin import pinyin  # pip install pinyin
+import re
 import shutil
 import subprocess
 import datetime
@@ -130,6 +131,35 @@ def list_update(path_store, list_json):
 
 def tag_update(tag_list: list):
     '''更新tag列表(./index/list_tag.json)'''
+
+    def get_first_letter(string):
+        '''获取拼音首字母'''
+        return pinyin.get_initial(string, delimiter='').upper()[0]
+    
+    def contains_chinese_characters(string):
+        '''判断字符串中是否包含中文字符'''
+        pattern = re.compile(r'[\u4e00-\u9fff]+')
+        return not bool(re.search(pattern, string))
+    
+    def sort_and_group_by_pinyin(strings):
+        '''按拼音排序并添加首字母'''
+        sorted_strings = sorted(strings, key=lambda x: pinyin.get(x, format='strip'))
+        grouped_strings = []
+        current_letter = None
+        for string in sorted_strings:
+            # 跳过数字和纯英文
+            if contains_chinese_characters(string):
+                grouped_strings.append(string)
+                continue
+            # 添加首字母索引
+            first_letter = get_first_letter(string)
+            if first_letter != current_letter:
+                current_letter = first_letter
+                grouped_strings.append(first_letter)
+            grouped_strings.append(string)
+        return grouped_strings
+    
+    tag_list = sort_and_group_by_pinyin(tag_list)
     with open(json_tag, 'w', encoding="utf-8") as file:
         js_str = json.dumps(tag_list, ensure_ascii=False)
         file.write(js_str)

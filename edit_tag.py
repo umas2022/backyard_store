@@ -57,5 +57,5 @@ for edit_file in get_file(json_dir):
                 print("file not found : %s" % path_old)
 
 
-# add_new = os.path.join(script_path,"add_new.py")
-# os.system("python %s" %add_new)
+add_new = os.path.join(script_path,"add_new.py")
+os.system("python %s" %add_new)

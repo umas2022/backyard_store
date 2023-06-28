@@ -141,3 +141,6 @@ for dp_list in del_list:
     for image in dp_list[1:]:
         print("delete: %s" % image)
         os.remove(image)
+
+add_new = os.path.join(script_path,"add_new.py")
+os.system("python %s" %add_new)

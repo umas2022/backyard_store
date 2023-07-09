@@ -56,6 +56,7 @@ for edit_file in get_file(json_dir):
             else:
                 print("file not found : %s" % path_old)
 
+# 重新生成目录
 
 add_new = os.path.join(script_path,"add_new.py")
 os.system("python %s" %add_new)

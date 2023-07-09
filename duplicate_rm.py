@@ -77,29 +77,9 @@ def dim_filter(image_paths):
     return duplicate_list
 
 
-def size_filter(image_paths):
-    '''寻找相同图片(大小)'''
-    '''实际测试发现了一些分辨率和尺寸都相同但大小不同的图片，因此不采用这个方法'''
-    image_size_list = defaultdict(list)
-    duplicate_dict = defaultdict(list)
-    for image_path in image_paths:
-        image = Image.open(image_path)
-        width, height = image.size
-        img_size = os.path.getsize(image_path)
-        image_size_list[img_size].append(image_path)
-
-        if len(image_size_list[img_size]) > 1:
-            duplicate_dict[img_size] = list(set(duplicate_dict[img_size] + image_size_list[img_size]))
-            print("\nfind duplicate (size): ")
-            for item in duplicate_dict[img_size]:
-                print(item)
-
-    duplicate_list = [image_list for image_list in duplicate_dict.values()]
-
-    return duplicate_list
-
 
 # 表情包查重
+
 sticker_list = [img for img in get_file(sticker_path)]
 duplicate_list_dim = dim_filter(sticker_list)
 duplicate_list_hash = []
@@ -110,6 +90,7 @@ duplicate_sticker_list = duplicate_list_hash
 
 
 # 图片查重
+
 image_list = [img for img in get_file(image_path)]
 duplicate_list_dim = dim_filter(image_list)
 duplicate_list_hash = []
@@ -120,6 +101,7 @@ duplicate_image_list = duplicate_list_hash
 
 
 # 写入结果
+
 duplicate_list = {
     "sticker": duplicate_sticker_list,
     "image": duplicate_image_list
@@ -136,11 +118,15 @@ Press Enter to delete duplicate images. Press Ctrl+C to exit.\n\
 It is recommended to check './output/duplicate.json' before deleting ..." %len(del_list))
 
 
+# 删除重复
 
 for dp_list in del_list:
     for image in dp_list[1:]:
         print("delete: %s" % image)
         os.remove(image)
+
+
+# 重新生成list
 
 add_new = os.path.join(script_path,"add_new.py")
 os.system("python %s" %add_new)

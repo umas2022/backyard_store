@@ -24,9 +24,8 @@ pip install imagehash
 
 
 ### 图片去重(duplicate_rm.py)
-- 运行脚本./duplicate_rm.py, 查重结果输出./output/duplicate.json, 可以在这里人工检查并手动删除,手动删除后运行re_index.py对图片重新排序
-- 仅靠哈希判断并不可靠, 因此脚本默认不直接删除文件, 需要人工再次进行判断
-- 暂时还没找到又快又好的查重方法
+- 脚本已经转移到电脑配件继续开发
+
 
 
 ### 重新排序(re_index.py)

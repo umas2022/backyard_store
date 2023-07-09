@@ -7,8 +7,6 @@
 ```
 # 生成tag
 pip install pinyin
-# 图片去重
-pip install imagehash
 ```
 
 

@@ -1,5 +1,7 @@
 '''
-两次push之间最好间隔30分钟以上,否则workflow可能会覆盖
+添加新资源
+
+两次push之间最好间隔30分钟以上,否则workflow可能会覆盖。workflow ↓
 https://github.com/umas2022/umas2022.github.io/actions
 
 '''
@@ -224,7 +226,7 @@ record_update(img_num, stk_num, vid_num)
 
 
 # 上传
-# print("\n===== push source =====\n")
-# subprocess.run(["git", "add", "."], cwd=".", shell=True)
-# subprocess.run(["git", "commit", "-m", "add pack"], cwd=".", shell=True)
-# subprocess.run(["git", "push"], cwd=".", shell=True)
+print("\n===== push source =====\n")
+subprocess.run(["git", "add", "."], cwd=".", shell=True)
+subprocess.run(["git", "commit", "-m", "add pack"], cwd=".", shell=True)
+subprocess.run(["git", "push"], cwd=".", shell=True)

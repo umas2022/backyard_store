@@ -3,7 +3,7 @@
 
 
 ### 环境初始化
-- 两个python库
+- 1个python库
 ```
 # 生成tag
 pip install pinyin
@@ -12,8 +12,9 @@ pip install pinyin
 
 ### 新增内容(add_new.py)
 - 目前支持的格式: ["jpg", "gif", "jpeg", "png", "webp", "mp4"]
-- 新增的沙雕图、表情包、视频分别放在./new_image/、./new_sticker/、./new_video/文件夹下，然后运行./add_new.py，新增内容将以序号重命名并移动至./storage/对应目录，同时自动更新./index/文件夹下索引json
-- 可以将文件夹整个放进./new_*目录，脚本将遍历所有子级（但是移动之后剩下的空文件夹不能自动删除（有空再做））
+- 新增的沙雕图、表情包、视频分别放在./new_image/、./new_sticker/、./new_video/文件夹下，然后运行./add_new.py
+- add_new.py以序号重命名新增内容，并将其移动至./storage/对应目录，同时自动更新./index/目录下的索引json
+- ./new_*目录可以放如多级文件夹，脚本将遍历所有子级（但是移动之后剩下的空文件夹不能自动删除（有空再做））
 
 
 ### 修改tag(edit_tag.py)
@@ -22,7 +23,7 @@ pip install pinyin
 
 
 ### 图片去重(duplicate_rm.py)
-- 脚本已经转移到电脑配件继续开发
+- 脚本已经转移到电脑配件
 
 
 

@@ -2,7 +2,7 @@
 添加新资源
 
 两次push之间最好间隔30分钟以上,否则workflow可能会覆盖。workflow ↓
-https://github.com/umas2022/umas2022.github.io/actions
+https://github.com/umas2022/backyard_store/actions
 
 '''
 

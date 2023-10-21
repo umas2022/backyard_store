@@ -21,7 +21,7 @@ sys.path.append(script_path)
 
 
 # 合法目标资源类型
-legal_type = ["jpg", "gif", "jpeg", "png", "webp", "mp4"]
+legal_type = ["jpg", "gif", "jpeg", "png", "webp", "mp4","MP4"]
 
 # 现存资源路径
 path_image = os.path.normpath(os.path.join(script_path, "storage/image"))
@@ -123,6 +123,8 @@ def list_update(path_store, list_json):
                 image = os.path.split(full_path)[-1]
                 if not str(image).split(".")[-1] in legal_type:
                     print("error : illegal type !")
+                    print(full_path)
+                    wait = input("\npress enter to continue ...")
                     continue
                 img_list[pack].append(image)
                 tag_list = list(set(tag_list) | set(get_tag_list(image)))
